@@ -4,6 +4,8 @@ const requireDir = require('require-dir')
 
 // Iniciando App
 const app = express()
+app.use(express.json())
+
 const port = 3001
 
 // Iniciando DB
