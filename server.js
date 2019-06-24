@@ -7,21 +7,12 @@ const app = express()
 const port = 3001
 
 // Iniciando DB
-mongoose.connect('mongodb://localhost:27017/node-rocketseat-starter', {
+mongoose.connect('mongodb://192.168.99.100:27017/node-rocketseat-starter', {
   useNewUrlParser: true
 })
 requireDir('./src/models')
 
-const Product = mongoose.model('Product');
-
 // Rotas
-app.get('/', (req, res) => {
-  Product.create({
-    title: 'React Native',
-    description: 'Build native apps with React',
-    url: 'https://github.com/facebook/react-native'
-  })
+app.use('/api', require('./src/routes'))
 
-  res.send('Hello World!')
-})
 app.listen(port, () => console.log(`Api app listening on port ${port}!`))
